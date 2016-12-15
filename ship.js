@@ -57,13 +57,16 @@ function Ship() {
     }
 
     this.shoot = function () {
-        var b = new Bullet(this.position, this.heading);
+        var x = (this.radius + 5) * cos(this.heading);
+        var y = this.radius * sin(this.heading);
+
+        var b = new Bullet(this.position.copy().add(x, y), this.velocity, this.heading);
         this.bullets.push(b);
         var self = this;
 
         setTimeout(function () {
             self.bullets.splice(self.bullets.indexOf(b), 1);
-        }, 2000);
+        }, 5000);
     }
 
     this.rotate = function (angle) {

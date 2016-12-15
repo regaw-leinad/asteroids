@@ -41,7 +41,7 @@ function Asteroid() {
 
     this.render = function () {
         push();
-        noFill();
+        fill(0);
         stroke(255);
         translate(this.position.x, this.position.y);
         rotate(this.heading);

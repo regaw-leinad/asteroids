@@ -1,7 +1,7 @@
-function Bullet(shipPos, shipHeading) {
+function Bullet(shipPos, shipVelocity, shipHeading) {
     this.position = shipPos.copy();
     this.heading = shipHeading;
-    this.velocity = p5.Vector.fromAngle(radians(this.heading)).mult(8);
+    this.velocity = p5.Vector.fromAngle(radians(this.heading)).mult(8).add(shipVelocity);
 
     this.draw = function () {
         this.update();

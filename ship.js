@@ -29,7 +29,7 @@ function Ship() {
             this.isThrusting = true;
             this.thrust();
         } else {
-            this.isThrusting = false
+            this.isThrusting = false;
         }
 
         if (keyIsDown(DOWN_ARROW)) {
@@ -98,7 +98,6 @@ function Ship() {
         translate(this.position.x, this.position.y);
         rotate(this.heading);
 
-        // That's what she said ;)
         // Draw the fire if we're thrusting
         if (this.isThrusting) {
             strokeWeight(2);
@@ -124,6 +123,12 @@ function Ship() {
         stroke(255);
         fill(0);
         triangle(this.radius + 5, 0, -this.radius, -this.radius, -this.radius, this.radius);
+
+        if (DEBUG_RENDER) {
+            noFill();
+            stroke(255, 0, 0);
+            ellipse(0, 0, this.radius * 2);
+        }
 
         pop();
     }

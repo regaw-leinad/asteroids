@@ -9,7 +9,7 @@ function Asteroid() {
     this.offsets = [];
 
     for (var i = 0; i < this.vertices; i++) {
-        this.offsets[i] = random(-this.radius * 0.5, this.radius * 0.5);
+        this.offsets[i] = random(-this.radius * 0.2, this.radius * 0.8);
     }
 
     this.draw = function () {
@@ -41,10 +41,11 @@ function Asteroid() {
 
     this.render = function () {
         push();
-        fill(0);
-        stroke(255);
         translate(this.position.x, this.position.y);
         rotate(this.heading);
+
+        fill(0);
+        stroke(255);
 
         beginShape();
         for (var i = 0; i < this.vertices; i++) {
@@ -56,8 +57,13 @@ function Asteroid() {
 
             vertex(x, y);
         }
-
         endShape(CLOSE);
+
+        if (DEBUG_RENDER) {
+            noFill();
+            stroke(255, 0, 0);
+            ellipse(0, 0, this.radius * 2);
+        }
 
         pop();
     }

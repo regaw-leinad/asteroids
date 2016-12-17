@@ -1,10 +1,20 @@
-function Asteroid() {
-    this.position = createVector(random(width), random(height));
+function Asteroid(position, radius) {
+    if (position) {
+        this.position = position.copy();
+    } else {
+        this.position = createVector(random(width), random(height));
+    }
+
+    if (radius) {
+        this.radius = radius;
+    } else {
+        this.radius = random(20, 50);
+    }
+
     this.velocity = p5.Vector.random2D().mult(random(0.1, 2));
     this.heading = 0;
     this.spinSpeed = random(-1, 1);
 
-    this.radius = random(20, 50);
     this.vertices = floor(random(7, 15));
     this.offsets = [];
 

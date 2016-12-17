@@ -7,15 +7,9 @@ function Ship() {
     this.isThrusting = false;
     this.isRetro = false;
 
-    this.bullets = [];
-
     this.draw = function () {
         this.update();
         this.render();
-
-        this.bullets.forEach(function (bullet) {
-            bullet.draw();
-        });
     }
 
     this.update = function () {
@@ -56,17 +50,11 @@ function Ship() {
         }
     }
 
-    this.shoot = function () {
+    this.getShotPosition = function () {
         var x = (this.radius + 5) * cos(this.heading);
         var y = this.radius * sin(this.heading);
 
-        var b = new Bullet(this.position.copy().add(x, y), this.velocity, this.heading);
-        this.bullets.push(b);
-        var self = this;
-
-        setTimeout(function () {
-            self.bullets.splice(self.bullets.indexOf(b), 1);
-        }, 5000);
+        return createVector(x, y).add(this.position);
     }
 
     this.rotate = function (angle) {
